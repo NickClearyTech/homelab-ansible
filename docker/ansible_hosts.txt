@@ -1,0 +1,4 @@
+[docker]
+ansible.local.nicleary.com
+mobydick.local.nicleary.com
+nextcloud.local.nicleary.com

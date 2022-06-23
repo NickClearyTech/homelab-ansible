@@ -1,0 +1,70 @@
+---
+- name: Install and configure postgres
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Apt Update
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install required pacakges
+    ansible.builtin.apt:
+      name:
+        - postgresql
+        - postgresql-contrib
+  
+  - name: Install python package
+    ansible.builtin.apt:
+      name:
+        - python3-psycopg2
+  
+  - name: Start and enable service
+    service: "name={{ item }} state=started enabled=yes"
+    with_items:
+      - postgresql
+  
+  - name: "Create app database"
+    postgresql_db:
+      state: present
+      name: "{{ db_name }}"
+    become: yes
+    become_user: postgres
+
+  - name: "Create db user"
+    postgresql_user:
+      state: present
+      name: "{{ db_user }}"
+      password: "{{ db_password }}"
+    become: yes
+    become_user: postgres
+
+  - name: "Grant db user access to app db"
+    postgresql_privs:
+      type: database
+      database: "{{ db_name }}"
+      roles: "{{ db_user }}"
+      grant_option: no
+      privs: all
+    become: yes
+    become_user: postgres
+
+  - name: "Allow md5 connection for the db user"
+    postgresql_pg_hba:
+      dest: "/etc/postgresql/12/main/pg_hba.conf"
+      contype: host
+      databases: all
+      source: 0.0.0.0/0
+      method: md5
+      users: "{{ db_user }}"
+      create: true
+    notify: restart postgres
+
+  - name: "Listen to any address"
+    lineinfile: dest=/etc/postgresql/12/main/postgresql.conf
+        regexp="#listen_addresses = 'localhost'" line="listen_addresses = '*'" state=present
+    notify: restart postgres
+
+  handlers:
+    - name: restart postgres
+      service: name=postgresql state=restarted

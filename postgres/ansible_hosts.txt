@@ -1,0 +1,2 @@
+[postgres]
+example.postgres.nicleary.com ansible_user=root
