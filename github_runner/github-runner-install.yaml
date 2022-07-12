@@ -1,0 +1,13 @@
+---
+- name: Install and configure github runner
+  hosts: all
+  become: yes
+  vars:
+    - access_token: {{ github_token }}
+    - github_account: NickClearyTech
+    - runner_org: yes
+    - runner_labels:
+      - ubuntu
+      - docker
+  roles:
+    - role: roles/ansible-github_actions_runner

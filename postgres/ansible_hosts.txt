@@ -1,2 +1,2 @@
 [postgres]
-example.postgres.nicleary.com ansible_user=root
+tandoor.postgres.nicleary.com ansible_user=root

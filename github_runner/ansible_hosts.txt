@@ -1,0 +1,2 @@
+[runners]
+githubrunner.local.nicleary.com
