@@ -2,4 +2,7 @@
 ansible.local.nicleary.com
 mobydick.local.nicleary.com
 nextcloud.local.nicleary.com
-pterodactyl.local.nicleary.com
+gameservernode.local.nicleary.com
+githubrunner.local.nicleary.com
+kiwix.local.nicleary.com
+vidarr.local.nicleary.com
