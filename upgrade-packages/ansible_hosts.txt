@@ -1,0 +1,11 @@
+[hosts]
+k8s01.local.nicleary.com
+k8s02.local.nicleary.com
+k8s03.local.nicleary.com
+k8s04.local.nicleary.com
+k8s05.local.nicleary.com
+k8s06.local.nicleary.com
+k8s07.local.nicleary.com
+mobydick.local.nicleary.com
+vidarr.local.nicleary.com
+gameservernode.local.nicleary.com

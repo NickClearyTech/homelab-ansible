@@ -1,0 +1,14 @@
+---
+- name: Install NFS Client
+  hosts: nfs
+  become: yes
+
+  tasks:
+  - name: Apt Update
+    ansible.builtin.apt:
+      update_cache: yes
+  
+  - name: Install NFS
+    ansible.builtin.apt:
+      pkg:
+        - nfs-common

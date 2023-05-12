@@ -1,0 +1,10 @@
+---
+- name: Install Updates
+  hosts: hosts
+  become: yes
+
+  tasks:
+  - name: Apt Update
+    ansible.builtin.apt:
+      update_cache: yes
+      upgrade: yes
