@@ -1,6 +1,5 @@
 [docker]
 mobydick.local.nicleary.com
 nextcloud.local.nicleary.com
-gameservernode.local.nicleary.com
-vidarr.local.nicleary.com
-192.168.1.190
+gameservernode01.local.nicleary.com
+midna.local.nicleary.com
